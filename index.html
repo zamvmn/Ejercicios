@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html class="notranslate" translate="no" onselectstart="return false">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Memorama</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="alertifyjs/css/themes/default.css">
+    <link rel="stylesheet" type="text/css" href="alertifyjs/css/alertify.css">
+    <script src="alertifyjs/alertify.js"></script>
+
+  </head>
+  <style media="screen">
+    html{
+      height:100%;
+      background: whitesmoke;
+      font-family: arial;
+      }
+    body{
+      margin: 0;
+      height: 100%;
+    }
+    h1{
+      font-family: arial;
+      margin: auto
+    }
+    h3{
+      font-family: arial;
+      margin: auto;
+      font-size: 2em;
+    }
+    p{
+      font-family: arial;
+      margin: auto;
+      font-size: 1.3rem;
+    }
+    .titulo{
+      display: flex;
+      background: rebeccapurple;
+      width: 100%;
+      height: 10%;
+      padding: 1%;
+      box-sizing: border-box;
+      min-height: 70px;
+      max-height: 100px;
+      text-align: center;
+    }
+    .contenedor{
+      width: 100%;
+      height: 90%;
+    }
+    .config{
+      width: 100%;
+      height: 20%;
+      text-align: justify;
+      padding: 3.5%;
+      box-sizing: border-box;
+      display: inline-table;
+    }
+    .cont_tarjet{
+      width: 100%;
+      height: 110%;
+      display: inline-table;
+      padding: 1%;
+      box-sizing: border-box;
+    }
+    .button_start:hover{
+      background: #f1f1f1;
+    }
+    .tarjet{
+      width: 8.8%;
+      height: 23.5%;
+      border: 2px solid black;
+      background: white;
+      border-radius: 6px;
+      margin: .5%;
+      align-items: center;
+      display: flex;
+      outline: none;
+      justify-content: center;
+      font-size: 90px;
+      float: left;
+      font-family: serif;
+      cursor: pointer;
+      max-width: 138px;
+      max-height: 190px;
+      min-width: 115px;
+      min-height: 200px
+    }
+    .tarjet_act{
+      width: 8.8%;
+      height: 23.5%;
+      border: 2px solid black;
+      background: white;
+      border-radius: 6px;
+      margin: .5%;
+      align-items: center;
+      display: flex;
+      outline: none;
+      justify-content: center;
+      font-size: 25px;
+      float: left;
+      font-family: Arial;
+      cursor: pointer;
+      max-width: 138px;
+      max-height: 190px;
+      min-width: 115px;
+      min-height: 200px
+    }
+    .tarjet:hover{
+      background: #dcd363;
+    }
+    .flex_tarjet{
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .pie{
+      width: 100%;
+      height: 10%;
+      background: grey;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 21px;
+      font-weight: bold;
+      min-height: 60px;
+    }
+    .center_tarjet{
+      width: 95%;
+      height: 100%;
+      margin: auto;
+      padding: 1%
+    }
+    .start_cont{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+    .button_start{
+      margin: auto;
+      border: 3px solid black;
+      background: white;
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      font-size: 40px;
+      cursor: pointer;
+      outline: none
+    }
+    .content_reloj{
+      width: 100%;
+      height: 8%;
+      max-height: 70px;
+      display: inline-table;
+    }
+    .reloj{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      width: 10%;
+      height: 100%;
+      border: 2px solid black;
+      margin: auto;
+      border-radius: 10px;
+      background: white;
+      min-width: 140px;
+      min-height: 29px;
+    }
+    .tabla{
+      display: inline-table;
+    }
+
+    @media screen and (min-width:1000px) {
+      p{
+        font-size: 1.5rem;
+      }
+    }
+    @media screen and (max-width:500px) {
+      .tarjet{
+        max-height: 160px;
+        min-width: 100px;
+        min-height: 160px;
+      }
+      .tarjet_act{
+        max-height: 160px;
+        min-width: 100px;
+        min-height: 160px;
+        font-size: 20px;
+      }
+      .pie{
+        font-size: 16px;
+      }
+    }
+    @media screen and (max-width:1200px) {
+      .tarjet_act{
+        font-size: 23px;
+      }
+    }
+    @media screen and (min-width:1300px) {
+      .tarjet{
+        max-width: 130px;
+        max-height: 200px;
+        min-width: 125px;
+        min-height: 200px;
+      }
+      .tarjet_act{
+        max-width: 130px;
+        max-height: 200px;
+        min-width: 125px;
+        min-height: 200px;
+      }
+      .config{
+        padding: 2%;
+      }
+    }
+  </style>
+  <body>
+    <div class="titulo">
+      <h1 style="color:white">MEMORAMA</h1>
+    </div>
+    <div class="contenedor">
+      <div class="config">
+        <h3>Instructions</h3>
+        <br>
+        <p>When you feel ready press the "START" button to start the game, the time will be running and you will have to find the verbs in the past and present. Remember that the position of the cards is random with each new attempt.</p>
+      </div>
+      <div id="reloj" class="tabla">
+      </div>
+      <div class="cont_tarjet">
+        <div id="pila" class="center_tarjet">
+          <div id="content_tarjet" class="flex_tarjet">
+            <div id="remov_elem" class="start_cont">
+              <input type="button" value="START" class="button_start" onclick="juego()">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pie">ESCUELA PREPARATORIA OFICIAL No. 27</div>
+    </div>
+
+  </body>
+  <script>
+      function $l(r){
+        var data = document.getElementById(r);
+        return data;
+      }
+
+      function creador(tipo,id,estilo,dato,clase,type,valor){
+      if(tipo != ""){
+        var elemento = document.createElement(tipo)
+        if (id != ""){
+          elemento.setAttribute("id",id);
+        }
+        if (estilo != ""){
+          elemento.style.cssText = estilo;
+        }
+        if (dato != ""){
+          elemento.innerHTML = dato;
+        }
+        if (clase != ""){
+          elemento.setAttribute("class",clase);
+        }
+        if (type != ""){
+          elemento.setAttribute("type",type);
+        }
+        if (valor != ""){
+          elemento.value = valor;
+        }
+        return datos = elemento;
+      }else{
+        console.log("Error al incrustar la etiqueta");
+      }
+    }
+
+    const pas_ing = [{
+      pos: 'MA==',
+      p: 'QnJlYWs=',
+      pas: 'QnJva2U='
+    },{
+      pos: 'MQ==',
+      p: 'QnJpbmc=',
+      pas: 'QnJvdWdodA=='
+    },{
+      pos: 'Mg==',
+      p: 'QnVpbGQ=',
+      pas: 'QnVpbHQ='
+    },{
+      pos: 'Mw==',
+      p: 'QnV5',
+      pas: 'Qm91Z2h0'
+    },{
+      pos: 'NA==',
+      p: 'Qmxvdw==',
+      pas: 'Qmxldw=='
+    },{
+      pos: 'NQ==',
+      p: 'Q29tZQ==',
+      pas: 'Q2FtZQ=='
+    },{
+      pos: 'Ng==',
+      p: 'Q29zdA==',
+      pas: 'Q29zdA=='
+    },{
+      pos: 'Nw==',
+      p: 'RG8=',
+      pas: 'RGlk'
+    },{
+      pos: 'OA==',
+      p: 'RHJpdmU=',
+      pas: 'RHJvdmU='
+    },{
+      pos: 'OQ==',
+      p: 'RWF0',
+      pas: 'QXRl'
+    },{
+      pos: 'MTA=',
+      p: 'RmlnaHQ=',
+      pas: 'Rm91Z2h0'
+    },{
+      pos: 'MTE=',
+      p: 'Rmx5',
+      pas: 'Rmxldw=='
+    },{
+      pos: 'MTI=',
+      p: 'SGVhcg==',
+      pas: 'SGVhcmQ='
+    },{
+      pos: 'MTM=',
+      p: 'S2VlcA==',
+      pas: 'S2VwdA=='
+    },{
+      pos: 'MTQ=',
+      p: 'TWFrZQ==',
+      pas: 'TWFkZQ=='
+    },{
+      pos: 'MTU=',
+      p: 'UmVhZA==',
+      pas: 'UmVhZA=='
+    },{
+      pos: 'MTY=',
+      p: 'UmlzZQ==',
+      pas: 'Um9zZQ=='
+    },{
+      pos: 'MTc=',
+      p: 'U2Vl',
+      pas: 'U2F3'
+    },{
+      pos: 'MTg=',
+      p: 'U2VuZA==',
+      pas: 'U2VudA=='
+    },{
+      pos: 'MTk=',
+      p: 'U2h1dA==',
+      pas: 'U2h1dA=='
+    }]
+
+    function reinicio(){
+      // clearInterval(idan)
+      $l("pila").removeChild($l("content_tarjet"))
+      var content = creador("div","content_tarjet","","","flex_tarjet","","")
+      var remov = creador("div","remov_elem","","","start_cont","","")
+      var input = creador("input","","","","button_start","button","START")
+      remov.appendChild(input)
+      content.appendChild(remov)
+      $l("pila").appendChild(content)
+      $l("reloj").removeChild($l("crono"))
+      $l("reloj").setAttribute("class","")
+      check = 0;
+      temporal = 0;
+      temporal_seg;
+      errores = 0;
+      contag_tar = 0;
+      contan_acc = 0;
+      s = 0;
+      h = 0;
+      m = 0;
+      tiempo;
+    }
+
+    function create_tar(a, b){
+      var tarjet = creador("input","","","","tarjet","button","?")
+      tarjet.setAttribute("onclick","tar(this)")
+      tarjet.setAttribute("data-par",a)
+      tarjet.setAttribute("data-opt",b)
+      return tarjet;
+    }
+
+    function aleatorio(a,b){
+      var data = Math.round(Math.random()*(a-b)+parseInt(b));
+      return data;
+    }
+
+    function gen_car(){
+      var opciones = new Array;
+      for (var i = 0; i < 20; i++) {
+        var data = aleatorio(0,19)
+        if(opciones.includes(data) == 0){
+          opciones[i]=data
+        }else{
+          i--;
+        }
+      }
+      return opciones;
+    }
+
+    function gen_alea(){
+      var opciones = new Array;
+      for (var i = 0; i < 40; i++) {
+        var data = aleatorio(0,39)
+        if(opciones.includes(data) == 0){
+          opciones[i]=data
+        }else{
+          i--;
+        }
+      }
+      return opciones;
+    }
+
+    function juego(){
+      var tarjet = new Array;
+      var tarjet_min = new Array;
+      $l("content_tarjet").removeChild($l("remov_elem"))
+      var div_rej = creador("div","crono","","00:00:00","reloj","","")
+      $l("reloj").setAttribute("class","content_reloj")
+      $l("reloj").appendChild(div_rej)
+      cronometrar()
+
+      var opciones = gen_car()
+      var combinacion = gen_alea();
+
+      for (var i = 0; i < 20; i++){
+        tarjet[i] = create_tar(pas_ing[opciones[i]].pos, 0)
+        tarjet_min[i] = create_tar(pas_ing[opciones[19-i]].pos, 1)
+
+      }
+
+      for (var e = 0; e < 20; e++) {
+        $l("content_tarjet").appendChild(tarjet[opciones[e]])
+        $l("content_tarjet").appendChild(tarjet_min[opciones[e]])
+      }
+    }
+
+    var check = 0;
+    var temporal = 0;
+    var temporal_seg;
+    var errores = 0;
+    var contag_tar = 0;
+    var contan_acc = 0;
+    var s = 0;
+    var h = 0;
+    var m = 0;
+    var tiempo;
+
+    function cronometrar(){
+      idan = setInterval("text_time()",1000);
+    }
+
+    function text_time(){
+      var hAux, mAux, sAux;
+      s++;
+      if (s>59){m++;s=0;}
+      if (m>59){h++;m=0;}
+      if (h>24){h=0;}
+
+      if (s<10){sAux="0"+s;}else{sAux=s;}
+      if (m<10){mAux="0"+m;}else{mAux=m;}
+      if (h<10){hAux="0"+h;}else{hAux=h;}
+
+      tiempo = hAux + ":" + mAux + ":" + sAux;
+      $l("crono").innerHTML = tiempo
+    }
+
+    function opacidad_t(){
+
+          if(contag_tar < 80){
+            temporal_seg.style.cssText = "filter: opacity(0."+(90-contag_tar)+");"
+            temporal.style.cssText = "filter: opacity(0."+(90-contag_tar)+");"
+          }else{
+            temporal_seg.style.cssText = "filter: opacity(0.00"+(90-contag_tar)+");"
+            temporal.style.cssText = "filter: opacity(0.00"+(90-contag_tar)+");"
+          }
+
+          contag_tar++;
+          if(contag_tar == 80){
+            temporal.removeAttribute("style")
+            temporal.value = "?"
+            temporal.setAttribute("onclick","tar(this)")
+            temporal.setAttribute("class","tarjet")
+            temporal_seg.removeAttribute("style")
+            temporal.setAttribute("onclick","tar(this)")
+            temporal_seg.value = "?"
+            temporal_seg.setAttribute("class","tarjet")
+            contag_tar = 0;
+            check = 0;
+            temporal = 0;
+            temporal_seg = 0;
+            clearInterval(idVar)
+        }
+    }
+
+    function tar(r){
+      if(check != 2){
+        if(check == 0){
+          r.removeAttribute("onclick")
+          r.setAttribute("class","tarjet_act")
+          var data = atob(r.dataset.par)
+          if(r.dataset.opt == "0"){
+            r.value = atob(pas_ing[data].p)
+          }else{
+            r.value = atob(pas_ing[data].pas)
+          }
+          temporal = r
+          check = 1;
+        }else{
+          check = 2;
+          r.setAttribute("class","tarjet_act")
+          var data = atob(r.dataset.par)
+          if(r.dataset.opt == "0"){
+            r.value = atob(pas_ing[data].p)
+          }else{
+            r.value = atob(pas_ing[data].pas)
+          }
+          temporal_seg = r;
+          if(temporal_seg.dataset.par === temporal.dataset.par && temporal_seg.dataset.opt != temporal.dataset.opt){
+            temporal_seg.removeAttribute("onclick")
+
+            let a = aleatorio(50,150);let b = aleatorio(50,150);let c = aleatorio(50,150)
+            temporal_seg.style.cssText = "border-color: rgb("+a+","+b+","+c+")"
+            temporal.style.cssText = "border-color: rgb("+a+","+b+","+c+")"
+            contan_acc++;
+            if(contan_acc == 20){
+              clearInterval(idan)
+              alertify.confirm('FELICIDADES', 'Has logrado completar el memorama en '+tiempo+' con '+errores+' errores', function(){ alertify.success('Ok') }
+                              , function(){ alertify.error('Cancel')});
+              reinicio();
+            }
+            check = 0;
+          }else{
+            idVar = setInterval("opacidad_t()",25);
+          }
+        }
+      }else{
+        console.log("Cargando...")
+      }
+    }
+  </script>
+</html>
